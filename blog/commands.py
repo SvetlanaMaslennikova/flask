@@ -22,3 +22,15 @@ def create_init_user():
             User(email='name@example.com', password=generate_password_hash('test123'))
         )
         db.session.commit()
+
+
+@click.command('create-init-admin')
+def create_init_admin():
+    from blog.models import User
+    from wsgi import app
+
+    with app.app_context():
+        db.session.add(
+            User(email='admin@example.com', password=generate_password_hash('test123'), is_staff=True)
+        )
+        db.session.commit()

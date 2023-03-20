@@ -9,7 +9,7 @@ load_dotenv()
 ENV = os.getenv('FLASK_ENV', default=EnvType.production)
 DEBUG = ENV == EnvType.development
 
-SECRET_KEY = 'p&fr)$h-eykgsm)ruz)d(ez2zx3$a4+$h+rg^#9p#tf5(#+zb)'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite'
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
 SQLALCHEMY_TRACK_MODIFICATIONS = False
